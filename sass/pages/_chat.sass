@@ -1,0 +1,45 @@
+// _chat.sass
+
+
+body.chat
+  section
+    position: relative
+
+  $history-width: 500px
+  .main
+    position: absolute
+    left: 50%
+    top: 0
+    margin-left: -$history-width / 2
+    border: 1px solid $border-color-light
+    width: $history-width
+
+  .history
+    border-bottom: 1px solid $border-color-light
+    ul
+      li
+        +pie-clearfix
+        padding: 8px
+        border-bottom: 1px solid $border-color-light
+      li:last-child
+        border-bottom: none
+      p
+        width: 460px
+        line-height: 24px
+    
+    li.you
+      border-right: 3px solid $theme-color
+      p
+        float: right
+        text-align: right
+    li.other
+      border-left: 3px solid $border-color-light
+      p
+        float: left
+
+  .actions
+    padding: 16px
+    text-align: center
+    input[type="text"]
+      width: 380px
+      margin-right: 8px

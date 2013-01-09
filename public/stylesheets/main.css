@@ -78,13 +78,17 @@ a {
 /* line 3, ../../sass/_forms.sass */
 input[type="text"] {
   border: 1px solid #e1e1e1;
+  height: 20px;
+  padding: 2px 8px;
 }
 
-/* line 6, ../../sass/_forms.sass */
+/* line 8, ../../sass/_forms.sass */
 input[type="submit"] {
   border: 1px solid #e1e1e1;
+  padding: 4px;
+  background-color: whitesmoke;
 }
-/* line 8, ../../sass/_forms.sass */
+/* line 12, ../../sass/_forms.sass */
 input[type="submit"]:hover {
   background-color: #00e194;
   cursor: pointer;
@@ -108,8 +112,8 @@ section {
   margin: 16px;
 }
 
-/* line 16, ../../sass/_screen.sass */
-.login {
+/* line 4, ../../sass/pages/_login.sass */
+body.login div {
   position: fixed;
   left: 50%;
   top: 50%;
@@ -120,8 +124,74 @@ section {
   padding: 16px;
   border: 1px solid #e1e1e1;
 }
-/* line 26, ../../sass/_screen.sass */
-.login input[type="text"] {
+/* line 14, ../../sass/pages/_login.sass */
+body.login div input[type="text"] {
   margin-right: 8px;
   width: 185px;
+}
+
+/* line 5, ../../sass/pages/_chat.sass */
+body.chat section {
+  position: relative;
+}
+/* line 9, ../../sass/pages/_chat.sass */
+body.chat .main {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  margin-left: -250px;
+  border: 1px solid #e1e1e1;
+  width: 500px;
+}
+/* line 17, ../../sass/pages/_chat.sass */
+body.chat .history {
+  border-bottom: 1px solid #e1e1e1;
+}
+/* line 20, ../../sass/pages/_chat.sass */
+body.chat .history ul li {
+  *zoom: 1;
+  padding: 8px;
+  border-bottom: 1px solid #e1e1e1;
+}
+/* line 38, ../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+body.chat .history ul li:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/* line 24, ../../sass/pages/_chat.sass */
+body.chat .history ul li:last-child {
+  border-bottom: none;
+}
+/* line 26, ../../sass/pages/_chat.sass */
+body.chat .history ul p {
+  width: 460px;
+  line-height: 24px;
+}
+/* line 30, ../../sass/pages/_chat.sass */
+body.chat .history li.you {
+  border-right: 3px solid #00e194;
+}
+/* line 32, ../../sass/pages/_chat.sass */
+body.chat .history li.you p {
+  float: right;
+  text-align: right;
+}
+/* line 35, ../../sass/pages/_chat.sass */
+body.chat .history li.other {
+  border-left: 3px solid #e1e1e1;
+}
+/* line 37, ../../sass/pages/_chat.sass */
+body.chat .history li.other p {
+  float: left;
+}
+/* line 40, ../../sass/pages/_chat.sass */
+body.chat .actions {
+  padding: 16px;
+  text-align: center;
+}
+/* line 43, ../../sass/pages/_chat.sass */
+body.chat .actions input[type="text"] {
+  width: 380px;
+  margin-right: 8px;
 }

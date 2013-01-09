@@ -1,0 +1,18 @@
+// _chat.sass
+
+body.chat
+
+  .main
+    border: 1px solid $border-color-light
+    width: 470px
+
+  .actions
+    padding: 8px
+  .history
+    border-bottom: 1px solid $border-color-light
+    ul
+      li
+        padding: 8px
+        border-bottom: 1px solid $border-color-light
+      li:last-child
+        border-bottom: none
