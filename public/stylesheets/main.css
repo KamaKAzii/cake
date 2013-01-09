@@ -66,17 +66,62 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /* line 3, ../../sass/_type.sass */
 body {
   font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
   color: #494949;
 }
 
-/* line 7, ../../sass/_type.sass */
+/* line 8, ../../sass/_type.sass */
 a {
   color: #00e194;
 }
 
+/* line 3, ../../sass/_forms.sass */
+input[type="text"] {
+  border: 1px solid #e1e1e1;
+}
+
+/* line 6, ../../sass/_forms.sass */
+input[type="submit"] {
+  border: 1px solid #e1e1e1;
+}
+/* line 8, ../../sass/_forms.sass */
+input[type="submit"]:hover {
+  background-color: #00e194;
+  cursor: pointer;
+}
+
 /* line 4, ../../sass/_screen.sass */
 header {
-  color: #00e194;
   border-bottom: 1px solid #e1e1e1;
-  height: 100px;
+}
+
+/* line 7, ../../sass/_screen.sass */
+h1 {
+  margin-left: 16px;
+  color: #00e194;
+  font-size: 20px;
+  line-height: 40px;
+}
+
+/* line 13, ../../sass/_screen.sass */
+section {
+  margin: 16px;
+}
+
+/* line 16, ../../sass/_screen.sass */
+.login {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-left: -120px;
+  margin-top: -10px;
+  width: 240px;
+  height: 20px;
+  padding: 16px;
+  border: 1px solid #e1e1e1;
+}
+/* line 26, ../../sass/_screen.sass */
+.login input[type="text"] {
+  margin-right: 8px;
+  width: 185px;
 }
