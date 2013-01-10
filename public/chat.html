@@ -1,10 +1,13 @@
 <!DOCTYPE HTML>
-<html>
+<html ng-app>
   <head>
     <title>cake v1 - chat</title>
     <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+    <script type="text/javascript"  src="js/jquery-1.8.3.js"></script>
+    <script type="text/javascript"  src="js/angular.min.js"></script>
+    <script type="text/javascript"  src="js/main.js"></script>
   </head>
-  <body class="chat">
+  <body class="chat" ng-controller="MessageListCtrl">
 
     <header>
       <h1>
@@ -17,16 +20,15 @@
     <div class="main">
       <div class="history">
         <ul>
-          <li class="other"><p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium</p></li>
-          <li class="you"><p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium</p></li>
           <li class="other"><p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantiua, At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatumm</p></li>
           <li class="you"><p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium</p></li>
-          <li class="you"><p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium</p></li>
+          <li class="you" ng-repeat="message in messages | filter: query"><p ng-bind-template="{{message.content}}">
+          </p></li>
         </ul>
       </div>
 
       <div class="actions">
-        <input type="text" class="message" />
+        <input type="text" class="message" ng-model="query" />
         <input type="submit" value="Go!" />
       </div>
     </div>
