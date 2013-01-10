@@ -3,6 +3,7 @@
   <head>
     <title>cake v1 - chat</title>
     <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+    <script src='/socket.io/socket.io.js'></script>
     <script type="text/javascript"  src="js/jquery-1.8.3.js"></script>
     <script type="text/javascript"  src="js/angular.min.js"></script>
     <script type="text/javascript"  src="js/main.js"></script>
@@ -20,16 +21,19 @@
     <div class="main">
       <div class="history">
         <ul>
+          <!--
           <li class="other"><p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantiua, At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatumm</p></li>
-          <li class="you"><p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium</p></li>
-          <li class="you" ng-repeat="message in messages | filter: query"><p ng-bind-template="{{message.content}}">
+          -->
+          <li class="you" ng-repeat="message in messages"><p ng-bind-template="{{message.content}}">
           </p></li>
         </ul>
       </div>
 
       <div class="actions">
-        <input type="text" class="message" ng-model="query" />
-        <input type="submit" value="Go!" />
+        <form ng-submit="submitForm()">
+          <input type="text" class="message" ng-model="message" />
+          <input type="submit" value="Go!" />
+        </form>
       </div>
     </div>
 
@@ -37,3 +41,6 @@
 
   </body>
 </html>
+<script>
+
+</script>
