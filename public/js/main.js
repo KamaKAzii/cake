@@ -27,8 +27,28 @@ function MessageListCtrl($scope) {
     }
   }
 
+  var padWith = function(str, n, padding) {
+    str += '';
+    while (str.length < n) {
+      str = padding + str;
+    }
+    return str;
+  };
+
+  var toShortDate = function(dateString) {
+    var date = new Date(dateString);
+    var hours = padWith(date.getHours(), 2, '0');
+    var minutes = padWith(date.getMinutes(), 2, '0');
+    return hours + ":" + minutes;
+  };
+
   $scope.onSendChat = function(data) {
-    $scope.messages.push(data);
+    var message = {
+      date: toShortDate(data.date),
+      login: data.login,
+      text: data.text
+    };
+    $scope.messages.push(message);
   };
   $scope.onWelcome = function(data) {
     $scope.login = data.login;
@@ -50,7 +70,7 @@ function MessageListCtrl($scope) {
   // List of logins who are listening to the convo.
   $scope.members = [];
 
-  // Messages displayed on the screen. Of form {login, text}.
+  // Messages displayed on the screen. Of form {date, login, text}.
   $scope.messages = [];
 
   // Bound to the input box for the current message.

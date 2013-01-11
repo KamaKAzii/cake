@@ -24,7 +24,9 @@ app = express()
 
 app.post '/login', (req, res) ->
   console.log 'session', req.session
-  req.session.login = req.body.id
+  login = req.session.login = req.body.id
+  if (!login) or login == ''
+    res.redirect '/'
   res.redirect '/chat.html'
 
 app.get '/logout', (req, res) ->
@@ -69,6 +71,7 @@ sio.sockets.on 'connection', (socket) ->
 
   socket.on 'send-chat', (data) ->
     data.login = socket.handshake.login
+    data.date = new Date()
     console.log 'broadcasting ' + JSON.stringify(data)
     console.log openSockets.length
     for s in openSockets
