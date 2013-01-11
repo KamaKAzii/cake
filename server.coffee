@@ -56,12 +56,16 @@ sio.set 'authorization', (data, accept) ->
 openSockets = []
 
 sio.sockets.on 'connection', (socket) ->
-  openSockets.push socket
+  login = socket.handshake.login
+  socket.login = login
 
   socket.on 'disconnect', ->
     i = openSockets.indexOf socket
     return if i == -1
     openSockets.splice i, 1
+
+    for s in openSockets
+      s.emit 'leave', {login}
 
   socket.on 'send-chat', (data) ->
     data.login = socket.handshake.login
@@ -70,4 +74,11 @@ sio.sockets.on 'connection', (socket) ->
     for s in openSockets
       s.emit 'send-chat', data
 
-  socket.emit 'welcome', {login: socket.handshake.login}
+  for s in openSockets
+    s.emit 'join', {login}
+
+  openSockets.push socket
+
+  socket.emit 'welcome',
+    login: login
+    members: s.login for s in openSockets

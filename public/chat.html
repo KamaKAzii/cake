@@ -18,6 +18,13 @@
     </header>
 
     <section>
+    <div class="memberList">
+      <h2>Members</h2>
+      <ul>
+        <li ng-repeat="member in members" ng-bind-template="{{member}}">
+        </li>
+      </ul>
+    </div>
     
     <div class="main">
       <div class="history">

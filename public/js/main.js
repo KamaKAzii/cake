@@ -5,6 +5,8 @@ function MessageListCtrl($scope) {
   var routes = {
     'send-chat': 'onSendChat',
     'welcome': 'onWelcome',
+    'join': 'onJoin',
+    'leave': 'onLeave',
   };
   var installRoute = function(eventName, methodName) {
     console.log('routing', eventName, 'to', methodName);
@@ -31,10 +33,22 @@ function MessageListCtrl($scope) {
   };
   $scope.onWelcome = function(data) {
     $scope.login = data.login;
+    $scope.members = data.members;
+  };
+
+  $scope.onJoin = function(data) {
+    $scope.members.push(data.login);
+  };
+  $scope.onLeave = function(data) {
+    var i = $scope.members.indexOf(data.login);
+    if (i != -1) {
+      $scope.members.splice(i, 1);
+    }
   };
 
   $scope.login = null;
   $scope.message = '';
+  $scope.members = [];
   $scope.messages = [
     /*
     {"content": "Some Lorem Ipsum goes here"},
