@@ -70,4 +70,4 @@ sio.sockets.on 'connection', (socket) ->
     for s in openSockets
       s.emit 'send-chat', data
 
-  socket.emit 'my-event', 'welcome ' + socket.handshake.login
+  socket.emit 'welcome', {login: socket.handshake.login}
