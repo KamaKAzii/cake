@@ -28,14 +28,12 @@ function MessageListCtrl($scope) {
   }
 
   $scope.onSendChat = function(data) {
-    $scope.messages.push(
-        {content: data.login + ": " + data.text});
+    $scope.messages.push(data);
   };
   $scope.onWelcome = function(data) {
     $scope.login = data.login;
     $scope.members = data.members;
   };
-
   $scope.onJoin = function(data) {
     $scope.members.push(data.login);
   };
@@ -46,16 +44,17 @@ function MessageListCtrl($scope) {
     }
   };
 
+  // Name of the logged in user.
   $scope.login = null;
-  $scope.message = '';
+
+  // List of logins who are listening to the convo.
   $scope.members = [];
-  $scope.messages = [
-    /*
-    {"content": "Some Lorem Ipsum goes here"},
-    {"content": "And some more Ipsum Wipsum can go here"},
-    {"content": "And some more stuff can go here"}
-    */
-  ];
+
+  // Messages displayed on the screen. Of form {login, text}.
+  $scope.messages = [];
+
+  // Bound to the input box for the current message.
+  $scope.message = '';
 
   $scope.submitForm = function() {
     if ($scope.message == '')
