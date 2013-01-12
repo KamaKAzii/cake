@@ -24,7 +24,9 @@ app = express()
 
 app.post '/login', (req, res) ->
   console.log 'session', req.session
-  req.session.login = req.body.id
+  login = req.session.login = req.body.id
+  if (!login) or login == ''
+    res.redirect '/'
   res.redirect '/chat.html'
 
 app.get '/logout', (req, res) ->
@@ -56,18 +58,30 @@ sio.set 'authorization', (data, accept) ->
 openSockets = []
 
 sio.sockets.on 'connection', (socket) ->
-  openSockets.push socket
+  login = socket.handshake.login
+  socket.login = login
 
   socket.on 'disconnect', ->
     i = openSockets.indexOf socket
     return if i == -1
     openSockets.splice i, 1
 
+    for s in openSockets
+      s.emit 'leave', {login}
+
   socket.on 'send-chat', (data) ->
     data.login = socket.handshake.login
+    data.date = new Date()
     console.log 'broadcasting ' + JSON.stringify(data)
     console.log openSockets.length
     for s in openSockets
       s.emit 'send-chat', data
 
-  socket.emit 'my-event', 'welcome ' + socket.handshake.login
+  for s in openSockets
+    s.emit 'join', {login}
+
+  openSockets.push socket
+
+  socket.emit 'welcome',
+    login: login
+    members: s.login for s in openSockets

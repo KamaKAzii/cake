@@ -14,9 +14,17 @@
       <h1>
         cake V1
       </h1>
+      <span ng-show="login">Logged in as {{login}} <a href="/logout">[logout]</a></span>
     </header>
 
     <section>
+    <div class="memberList">
+      <h2>Members</h2>
+      <ul>
+        <li ng-repeat="member in members" ng-bind-template="{{member}}">
+        </li>
+      </ul>
+    </div>
     
     <div class="main">
       <div class="history">
