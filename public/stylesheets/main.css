@@ -75,6 +75,11 @@ a {
   color: #00e194;
 }
 
+/* line 11, ../../sass/_type.sass */
+b {
+  font-weight: bold;
+}
+
 /* line 3, ../../sass/_forms.sass */
 input[type="text"] {
   border: 1px solid #e1e1e1;

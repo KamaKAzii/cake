@@ -10,7 +10,7 @@ function MessageListCtrl($scope) {
 
   $scope.receiveMessage = function(data) {
     $scope.messages.push(
-        {content: data.login + ": " + data.text});
+        data);
   };
 
   $scope.message = '';
