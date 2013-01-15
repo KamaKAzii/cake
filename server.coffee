@@ -8,7 +8,7 @@ parseSignedCookie = connect.utils.parseSignedCookie
 parseJSONCookie = connect.utils.parseJSONCookie
 
 SECRET = 'secret'
-PORT = 3000
+PORT = process.env.PORT || 3000
 
 sioCookieParser = express.cookieParser SECRET
 
@@ -37,11 +37,16 @@ app.get '/dumpCookies', (req, res) ->
   cookieString = JSON.stringify req.headers.cookie
   res.end cookieString + "::" + JSON.stringify req.signedCookies
 
-console.log 'listening on port', PORT
+console.log 'cake: listening on port', PORT
 server = http.createServer app
-server.listen 3000
+server.listen PORT
 
 sio = io.listen server
+
+sio.configure ->
+  sio.set "transports", ["xhr-polling"]
+  sio.set "polling duration", 10
+
 
 sio.set 'authorization', (data, accept) ->
   cookies = cookie.parse data.headers.cookie
